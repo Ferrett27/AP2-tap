@@ -36,7 +36,7 @@ O banco de dados relacional foi modelado para garantir a integridade e normaliza
 Scripts utilizados para a criação e estruturação física do banco de dados na nuvem:
 
 ```sql
--- 1. Tabela Editora (Independente)
+-- 1. Tabela Editora 
 CREATE TABLE Editora (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE Editora (
     pais_origem VARCHAR(50)
 );
 
--- 2. Tabela Plataforma (Independente)
+-- 2. Tabela Plataforma
 CREATE TABLE Plataforma (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
@@ -74,16 +74,14 @@ CREATE TABLE Jogo_Plataforma (
 
 ---
 
-## 3. Design Patterns Implementados (Gang of Four)
-
-Para garantir a escalabilidade e respeitar os princípios do **SOLID** e do **Clean Code**, o sistema implementa dois padrões de projeto clássicos estruturais e comportamentais.
+## 3. Design Patterns Implementados 
 
 ### 3.1. Singleton (Padrão Criacional)
 
 * **Objetivo:** Garantir que uma classe tenha apenas uma única instância rodando na memória durante todo o ciclo de vida da aplicação e fornecer um ponto global de acesso a ela.
-* **Onde foi aplicado:** Na classe `ConexaoBanco` (pacote `conexao`).
+* **Onde foi aplicado:** Na classe `ConexaoBanco` (pacote `conexao`) para garantir a inicialização do driver do MySQL apenas uma vez, e todos os gerenciadores solicitam a conexão a essa mesma instância.
 
 ### 3.2. Observer (Padrão Comportamental)
 
 * **Objetivo:** Definir uma dependência "um-para-muitos" entre objetos, de modo que, quando um objeto muda de estado, todos os seus dependentes são notificados e atualizados automaticamente.
-* **Onde foi aplicado:** Na inserção de novos jogos no catálogo (Classe `GerenciadorJogo` e pacote `observer`).
+* **Onde foi aplicado:** Na inserção de novos jogos no catálogo (Classe `GerenciadorJogo` e pacote `observer`) para sempre que um novo jogo é salvo com sucesso no banco de dados, o Gerenciador notifica todos os observadores cadastrados.
