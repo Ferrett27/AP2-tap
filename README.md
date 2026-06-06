@@ -19,7 +19,7 @@ A **API Loja de Jogos** é um sistema back-end construído para gerenciar o cat�
 
 
 * **Deploy:** Render (Hospedagem em Nuvem da API).
-* * **Link do projeto em nuvem:** https://api-loja-jogos.onrender.com/swagger-ui/index.html
+  * **Link do projeto em nuvem:** https://api-loja-jogos.onrender.com/swagger-ui/index.html
 ---
 
 ## 2. Estrutura do Banco de Dados (MySQL)
