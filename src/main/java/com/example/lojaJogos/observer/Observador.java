@@ -1,7 +1,7 @@
 package com.example.lojaJogos.observer;
 
-import com.example.lojaJogos.model.Jogo;
+import com.example.lojaJogos.model.Jogador;
 
 public interface Observador {
-    String reagirNovoJogoAdicionado(Jogo jogo);
+    String reagirNovoJogadorAdicionado(Jogador jogador);
 }
