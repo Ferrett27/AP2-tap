@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GerenciadorJogoPlataforma {
+public class GerenciadorJogoPlataforma implements OperacoesCrudRelacao<JogoPlataforma> {
 
     public void vincular(Integer jogoId, Integer plataformaId) {
         String querySql = "INSERT INTO Jogo_Plataforma (jogo_id, plataforma_id) VALUES (?, ?)";

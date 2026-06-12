@@ -1,6 +1,6 @@
 package com.example.lojaJogos.controller;
 
-import com.example.lojaJogos.gerenciador.GerenciadorJogo;
+import com.example.lojaJogos.gerenciador.OperacoesCrud;
 import com.example.lojaJogos.model.Jogo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -17,12 +17,13 @@ import java.util.List;
 @Tag(name = "Gerenciamento de Jogos", description = "Operações CRUD para o catálogo de jogos da loja")
 public class JogoController {
 
-    private final GerenciadorJogo gerenciadorJogo;
+    private final OperacoesCrud<Jogo, List<String>> gerenciadorJogo;
     private final DateTimeFormatter formatoDataBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public JogoController(GerenciadorJogo gerenciadorJogo) {
+    public JogoController(OperacoesCrud<Jogo, List<String>> gerenciadorJogo) {
         this.gerenciadorJogo = gerenciadorJogo;
     }
+
 
     @PostMapping
     @Operation(summary = "Inserir Jogo", description = "Adiciona um jogo ao catálogo e dispara um Observer.")
@@ -39,7 +40,7 @@ public class JogoController {
                 .editoraId(editoraId)
                 .build();
 
-        List<String> logsDosObservadores = gerenciadorJogo.insercao(novoJogo);
+        List<String> logsDosObservadores = gerenciadorJogo.inserir(novoJogo);
 
         StringBuilder respostaSwagger = new StringBuilder();
         respostaSwagger.append("Jogo cadastrado com sucesso no banco de dados!\n\n");
@@ -55,7 +56,7 @@ public class JogoController {
     @GetMapping
     @Operation(summary = "Listar Catálogo de Jogos", description = "Retorna a listagem de todos os jogos.")
     public List<Jogo> listar() {
-        return gerenciadorJogo.resultado();
+        return gerenciadorJogo.listarTodos();
     }
 
     @GetMapping("/{id}")

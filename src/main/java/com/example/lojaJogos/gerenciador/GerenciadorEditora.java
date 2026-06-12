@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GerenciadorEditora {
+public class GerenciadorEditora implements OperacoesCrud<Editora, Void> {
 
-    public void inserir(Editora editora) {
+    public Void inserir(Editora editora) {
         String querySql = "INSERT INTO Editora (nome, ano_fundacao, pais_origem) VALUES (?, ?, ?)";
 
         try (Connection conexaoBanco = ConexaoBanco.getInstancia().getConexao();
@@ -22,6 +22,8 @@ public class GerenciadorEditora {
             comandoPreparado.setString(3, editora.getPaisOrigem());
 
             comandoPreparado.executeUpdate();
+
+            return null;
 
         } catch (SQLException erroSql) {
             throw new RuntimeException("Erro ao inserir editora no banco de dados", erroSql);

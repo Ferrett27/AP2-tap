@@ -1,6 +1,6 @@
 package com.example.lojaJogos.controller;
 
-import com.example.lojaJogos.gerenciador.GerenciadorPlataforma;
+import com.example.lojaJogos.gerenciador.OperacoesCrud;
 import com.example.lojaJogos.model.Plataforma;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,9 +13,9 @@ import java.util.List;
 @Tag(name = "Gerenciamento de Plataformas", description = "Operações para as plataformas disponíveis (PC, Consoles, Mobile)")
 public class PlataformaController {
 
-    private final GerenciadorPlataforma gerenciadorPlataforma;
+    private final OperacoesCrud<Plataforma, Void> gerenciadorPlataforma;
 
-    public PlataformaController(GerenciadorPlataforma gerenciadorPlataforma) {
+    public PlataformaController(OperacoesCrud<Plataforma, Void> gerenciadorPlataforma) {
         this.gerenciadorPlataforma = gerenciadorPlataforma;
     }
 

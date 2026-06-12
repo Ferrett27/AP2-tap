@@ -1,6 +1,6 @@
 package com.example.lojaJogos.controller;
 
-import com.example.lojaJogos.gerenciador.GerenciadorJogoPlataforma;
+import com.example.lojaJogos.gerenciador.OperacoesCrudRelacao;
 import com.example.lojaJogos.model.JogoPlataforma;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,9 +13,9 @@ import java.util.List;
 @Tag(name = "Associação Jogo-Plataforma", description = "Operações para gerenciar a tabela associativa de Jogo e Plataforma")
 public class JogoPlataformaController {
 
-    private final GerenciadorJogoPlataforma gerenciadorJogoPlataforma;
+    private final OperacoesCrudRelacao gerenciadorJogoPlataforma;
 
-    public JogoPlataformaController(GerenciadorJogoPlataforma gerenciadorJogoPlataforma) {
+    public JogoPlataformaController(OperacoesCrudRelacao gerenciadorJogoPlataforma) {
         this.gerenciadorJogoPlataforma = gerenciadorJogoPlataforma;
     }
 

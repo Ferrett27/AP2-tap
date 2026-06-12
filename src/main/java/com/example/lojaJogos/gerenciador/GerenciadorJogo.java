@@ -2,8 +2,6 @@ package com.example.lojaJogos.gerenciador;
 
 import com.example.lojaJogos.conexao.ConexaoBanco;
 import com.example.lojaJogos.model.Jogo;
-import com.example.lojaJogos.observer.NotificadorEmailMarketing;
-import com.example.lojaJogos.observer.NotificadorSistema;
 import com.example.lojaJogos.observer.Observador;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GerenciadorJogo {
+public class GerenciadorJogo implements OperacoesCrud<Jogo, List<String>> {
 
-    private final List<Observador> listaDeObservadores = new ArrayList<>();
+    private final List<Observador> listaDeObservadores;
 
-    public GerenciadorJogo() {
-        this.listaDeObservadores.add(new NotificadorEmailMarketing());
-        this.listaDeObservadores.add(new NotificadorSistema());
+    public GerenciadorJogo(List<Observador> listaDeObservadores) {
+        this.listaDeObservadores = listaDeObservadores;
     }
 
     private List<String> notificarObservadores(Jogo jogoSalvo) {
@@ -29,7 +26,7 @@ public class GerenciadorJogo {
         return logsGerados;
     }
 
-    public List<String> insercao(Jogo jogo) {
+    public List<String> inserir(Jogo jogo) {
         String querySql = "INSERT INTO Jogo (titulo, preco, data_lancamento, editora_id) VALUES (?, ?, ?, ?)";
 
         try (Connection conexaoBanco = ConexaoBanco.getInstancia().getConexao();
@@ -55,7 +52,7 @@ public class GerenciadorJogo {
         }
     }
 
-    public List<Jogo> resultado() {
+    public List<Jogo> listarTodos() {
         List<Jogo> listaDeJogos = new ArrayList<>();
         String querySql = "SELECT id, titulo, preco, data_lancamento, editora_id FROM Jogo";
 

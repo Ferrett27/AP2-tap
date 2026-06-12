@@ -1,7 +1,7 @@
 package com.example.lojaJogos.controller;
 
-import com.example.lojaJogos.gerenciador.GerenciadorEditora;
 import com.example.lojaJogos.model.Editora;
+import com.example.lojaJogos.gerenciador.OperacoesCrud;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +13,9 @@ import java.util.List;
 @Tag(name = "Gerenciamento de Editoras", description = "Operações CRUD para as distribuidoras de jogos")
 public class EditoraController {
 
-    private final GerenciadorEditora gerenciadorEditora;
+    private final OperacoesCrud<Editora, Void> gerenciadorEditora;
 
-    public EditoraController(GerenciadorEditora gerenciadorEditora) {
+    public EditoraController(OperacoesCrud<Editora, Void> gerenciadorEditora) {
         this.gerenciadorEditora = gerenciadorEditora;
     }
 

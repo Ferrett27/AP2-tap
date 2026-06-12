@@ -17,5 +17,5 @@ public class Jogo {
     private String titulo;
     private BigDecimal preco;
     private LocalDate dataLancamento;
-    private Integer editoraId;
+    private Integer editoraId; // N:1 com Editora
 }

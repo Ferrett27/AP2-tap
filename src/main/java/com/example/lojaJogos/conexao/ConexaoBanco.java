@@ -19,7 +19,6 @@ public class ConexaoBanco {
         }
     }
 
-    // Utilização do Singleton aqui
     public static ConexaoBanco getInstancia() {
         if (instancia == null) {
             instancia = new ConexaoBanco();

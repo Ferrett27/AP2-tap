@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GerenciadorPlataforma {
+public class GerenciadorPlataforma implements OperacoesCrud<Plataforma, Void> {
 
-    public void inserir(Plataforma plataforma) {
+    public Void inserir(Plataforma plataforma) {
         String querySql = "INSERT INTO Plataforma (nome, fabricante) VALUES (?, ?)";
 
         try (Connection conexaoBanco = ConexaoBanco.getInstancia().getConexao();
@@ -21,6 +21,8 @@ public class GerenciadorPlataforma {
             comandoPreparado.setString(2, plataforma.getFabricante());
 
             comandoPreparado.executeUpdate();
+
+            return null;
 
         } catch (SQLException erroSql) {
             throw new RuntimeException("Erro ao inserir plataforma no banco de dados", erroSql);
