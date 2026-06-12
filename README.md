@@ -14,7 +14,7 @@ A **API Loja de Jogos** é um sistema back-end construído para gerenciar o cat�
 * **Framework Web:** Spring Boot 3+ (Spring WebMVC)
 * **Banco de Dados:** MySQL (Hospedado em nuvem via Clever Cloud)
 * **Acesso a Dados:** JDBC Puro (Sem uso de ORM como Hibernate, visando controle total e performance nas queries SQL)
-* **Ferramentas e Bibliotecas:** * **Lombok:** Redução de código boilerplate (Getters, Setters, Construtores).
+* **Ferramentas e Bibliotecas:** **Lombok:** Redução de código boilerplate (Getters, Setters, Construtores).
 * **Swagger (OpenAPI 3):** Interface gráfica interativa para documentação e teste dos endpoints.
 
 
