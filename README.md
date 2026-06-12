@@ -22,6 +22,7 @@ A **API de Competição** é um sistema back-end construído para gerenciar info
 
 
 * **Deploy:** Render (Hospedagem em Nuvem da API).
+  * Link da nuvem: https://ap2-tap.onrender.com/swagger-ui/index.html#/
 
 ---
 
